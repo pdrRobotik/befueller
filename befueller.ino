@@ -2,11 +2,13 @@
 #include <AccessNode.h>
 
 RobotikInterConnect* ric;
+int counter = 0;
+bool isClicked = false;
 
 int i3Wert = 0;
 
 void setup() {
-  ric = new RobotikInterConnect("Befueller");
+  ric = new RobotikInterConnect("befueller");
 }
 
 void loop() {
@@ -41,7 +43,7 @@ void run() {
 
   //Förderband (Lager Conatiner) bis Lichtschranke
   //wenn mdsn command "an" ################################################# waiting for message -> if(message) 
-  ric->send("debug","websocket","OK");
+  ric->send("mfc","websocket","OK");
   ric->read_wait();
 
   //Förderband merge an
@@ -65,6 +67,9 @@ void run() {
 
   //Wekstückband aus
   ftduino.motor_set(Ftduino::M2, Ftduino::OFF);
+
+  ric->send("mfc","websocket","NEXT");
+  ric->read_wait();
 
   //Schranke auf
   while ( !ftduino.input_get(Ftduino::I1) ) {
