@@ -52,7 +52,7 @@ void run() {
   ftduino.motor_set(Ftduino::M4, Ftduino::LEFT);
   delay(100);
   while (ftduino.input_get(Ftduino::I3) ) {
-    delay(1)
+    delay(1);
   }
   delay(500);
   ftduino.motor_set(Ftduino::M4, Ftduino::OFF);
