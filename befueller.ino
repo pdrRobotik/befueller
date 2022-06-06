@@ -49,8 +49,10 @@ void run() {
   //Förderband merge an
   ftduino.motor_set(Ftduino::M1, Ftduino::LEFT);
    
+  ftduino.motor_set(Ftduino::M4, Ftduino::LEFT);
+  delay(100);
   while (ftduino.input_get(Ftduino::I3) ) {
-    ftduino.motor_set(Ftduino::M4, Ftduino::LEFT);
+    delay(1)
   }
   delay(500);
   ftduino.motor_set(Ftduino::M4, Ftduino::OFF);
