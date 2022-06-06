@@ -70,14 +70,15 @@ void run() {
   //Wekstückband aus
   ftduino.motor_set(Ftduino::M2, Ftduino::OFF);
 
-  ric->send("mfc","websocket","NEXT");
-  ric->read_wait();
 
   //Schranke auf
   while ( !ftduino.input_get(Ftduino::I1) ) {
     ftduino.motor_set(Ftduino::M3, Ftduino::RIGHT);
   }
   ftduino.motor_set(Ftduino::M3, Ftduino::OFF);
+
+  ric->send("mfc","websocket","NEXT");
+  ric->read_wait();
 
   //Förderband (merge)
   ftduino.motor_set(Ftduino::M1, Ftduino::LEFT);
